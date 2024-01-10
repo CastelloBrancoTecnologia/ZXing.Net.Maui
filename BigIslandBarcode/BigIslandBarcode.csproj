@@ -1,13 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<Nullable>disable</Nullable>
 		<!-- iOS, Android, MacCatalyst -->
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041</TargetFrameworks>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<SingleProject>true</SingleProject>
 		<UseMaui>true</UseMaui>
-
+		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
+			
 		<!-- Display name -->
 		<ApplicationTitle>BigIslandBarcode</ApplicationTitle>
 
@@ -33,6 +35,7 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
+	
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiImage Include="Resources\appicon.svg" ForegroundScale="0.8" ForegroundFile="Resources\appiconfg.svg" IsAppIcon="true" Color="#512BD4" />
@@ -47,6 +50,10 @@
 		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.3" />
+	</ItemGroup>
+	
 	<ItemGroup>
 		<ProjectReference Include="..\ZXing.Net.MAUI\ZXing.Net.MAUI.csproj" />
 		<ProjectReference Include="..\ZXing.Net.MAUI.Controls\ZXing.Net.MAUI.Controls.csproj" />

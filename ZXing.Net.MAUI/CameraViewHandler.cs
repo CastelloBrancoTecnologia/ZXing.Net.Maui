@@ -72,7 +72,7 @@ namespace ZXing.Net.Maui
 		public void AutoFocus()
 			=> cameraManager?.AutoFocus();
 
-		public static void MapFocus(CameraViewHandler handler, ICameraView cameraBarcodeReaderView, object? parameter)
+		public static void MapFocus(CameraViewHandler handler, ICameraView cameraBarcodeReaderView, object parameter)
 		{
 			if (parameter is not Point point)
 				throw new ArgumentException("Invalid parameter", "point");
@@ -80,7 +80,7 @@ namespace ZXing.Net.Maui
 			handler.Focus(point);
 		}
 
-		public static void MapAutoFocus(CameraViewHandler handler, ICameraView cameraBarcodeReaderView, object? parameters)
+		public static void MapAutoFocus(CameraViewHandler handler, ICameraView cameraBarcodeReaderView, object parameters)
 			=> handler.AutoFocus();
 	}
 }
